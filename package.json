@@ -1,0 +1,28 @@
+{
+  "name": "mmlpx-angularjs",
+  "version": "0.0.2",
+  "description": "mmlpx connector for angularjs",
+  "homepage": "https://github.com/mmlpxjs/mmlpx-angularjs",
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "types": "./esm/index.d.ts",
+  "scripts": {
+    "prepush": "npm run lint",
+    "build": "rm -fr dist && npm run build:cjs & npm run build:esm && cp {package.json,README.md} dist",
+    "build:cjs": "rm -fr dist/lib && tsc",
+    "build:esm": "rm -fr dist/esm && tsc -p tsconfig.esm.json",
+    "pub": "npm run lint && npm run build && npm publish dist",
+    "lint": "tslint src/*.ts & tslint src/**/*.ts"
+  },
+  "dependencies": {
+    "mmlpx": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.5.8",
+    "husky": "^0.14.1",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "^2.6.2"
+  }
+}
