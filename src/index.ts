@@ -6,6 +6,7 @@
 
 import { IControllerConstructor } from 'angular';
 import { instantiate } from 'mmlpx';
+import { runInAction } from 'mobx';
 
 export function connect(ViewModelClass: IControllerConstructor, ...dependencies: string[]) {
 
@@ -15,7 +16,8 @@ export function connect(ViewModelClass: IControllerConstructor, ...dependencies:
 			const viewModel = instantiate.apply(this, ViewModelClass, ...args);
 			// use this way to mock the preAssignBindingsEnabled behaviour
 			// @see https://github.com/angular/angular.js/blob/master/CHANGELOG.md#breaking-changes-1
-			return Object.assign(viewModel, this);
+			runInAction(() => Object.assign(viewModel, this));
+			return viewModel;
 		}
 	}
 

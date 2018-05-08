@@ -1,7 +1,7 @@
 {
   "name": "mmlpx-angularjs",
-  "version": "0.0.2",
-  "description": "mmlpx connector for angularjs",
+  "version": "0.0.3",
+  "description": "mmlpx connector to angularjs",
   "homepage": "https://github.com/mmlpxjs/mmlpx-angularjs",
   "main": "./lib/index.js",
   "module": "./esm/index.js",
@@ -15,7 +15,11 @@
     "lint": "tslint src/*.ts & tslint src/**/*.ts"
   },
   "dependencies": {
-    "mmlpx": "^2.0.3"
+    "mmlpx": "^2.0.3",
+    "mobx": "*"
+  },
+  "peerDependencies": {
+    "mobx": "*"
   },
   "devDependencies": {
     "@types/angular": "^1.5.8",
