@@ -1,6 +1,6 @@
 {
   "name": "mmlpx-angularjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "mmlpx connector to angularjs",
   "homepage": "https://github.com/mmlpxjs/mmlpx-angularjs",
   "main": "./lib/index.js",
@@ -9,24 +9,24 @@
   "scripts": {
     "prepush": "npm run lint",
     "build": "rm -fr dist && npm run build:cjs & npm run build:esm && cp {package.json,README.md} dist",
-    "build:cjs": "rm -fr dist/lib && tsc",
+    "build:cjs": "rm -fr dist/lib && tsc -p tsconfig.json",
     "build:esm": "rm -fr dist/esm && tsc -p tsconfig.esm.json",
     "pub": "npm run lint && npm run build && npm publish dist",
-    "lint": "tslint src/*.ts & tslint src/**/*.ts"
-  },
-  "dependencies": {
-    "mmlpx": "^2.0.3",
-    "mobx": "*"
+    "lint": "tslint 'src/**/*.ts'"
   },
   "peerDependencies": {
-    "mobx": "*"
+    "angular": "^1.5.8",
+    "mobx": "*",
+    "mmlpx": "^2.0.3 || ^3.0.0"
   },
   "devDependencies": {
     "@types/angular": "^1.5.8",
     "husky": "^0.14.1",
+    "mmlpx": "^3.1.0",
+    "mobx": "^5.0.3",
     "ts-loader": "^3.2.0",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^4.1.1",
-    "typescript": "^2.6.2"
+    "typescript": "^2.7.0"
   }
 }
